@@ -14,11 +14,11 @@ function App() {
 
   const fetchTodos = () => {
     axios
-      .get('http://localhost:5000/api/todos')
-      .then(response => {
+      .get('/api/todos') // Módosított sor
+      .then((response) => {
         setTodos(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Hiba történt a ToDo lista lekérdezésekor:', error);
       });
   };
@@ -31,7 +31,7 @@ function App() {
     event.preventDefault();
 
     axios
-      .post('http://localhost:5000/api/todos', { title: newTodoTitle })
+      .post('/api/todos', { title: newTodoTitle })
       .then(response => {
         setTodos([...todos, response.data]);
         setNewTodoTitle('');
@@ -47,7 +47,7 @@ function App() {
 
   const handleTodoUpdate = () => {
     axios
-      .put(`http://localhost:5000/api/todos/${selectedTodo._id}`, {
+      .put(`/api/todos/${selectedTodo._id}`, {
         title: selectedTodo.title,
         completed: selectedTodo.completed
       })
@@ -62,7 +62,7 @@ function App() {
 
   const handleTodoDelete = todo => {
     axios
-      .delete(`http://localhost:5000/api/todos/${todo._id}`)
+      .delete(`/api/todos/${todo._id}`)
       .then(response => {
         fetchTodos();
       })
