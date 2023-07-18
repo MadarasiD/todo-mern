@@ -21,6 +21,9 @@ app.get('/', (req, res) => {
     res.send('Hello, World!');
   });
 
+  const appUrl = process.env.APP_URL || 'http://localhost:5000';
+
+
 // MongoDB adatbázis csatlakozás
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -33,9 +36,8 @@ mongoose.connect(process.env.MONGODB_URI, {
       console.error('Hiba történt az adatbázis csatlakozásakor:', error);
     });
 
-// Szerver indítása
-app.listen(process.env.PORT, () => {
-    console.log('listening on port 5000');
-  });
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running at ${appUrl}`);
+    });
 
 process.env
