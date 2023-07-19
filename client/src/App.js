@@ -14,7 +14,7 @@ function App() {
 
   const fetchTodos = () => {
     axios
-      .get('https://madarasid-todo-mern.netlify.app/api/todos') // Módosított sor
+      .get('https://madarasid-todo-mern-app.netlify.app/api/todos') // Módosított sor
       .then((response) => {
         setTodos(response.data);
       })
@@ -31,7 +31,7 @@ function App() {
     event.preventDefault();
 
     axios
-      .post('https://madarasid-todo-mern.netlify.app/api/todos', { title: newTodoTitle })
+      .post('https://madarasid-todo-mern-app.netlify.app/api/todos', { title: newTodoTitle })
       .then(response => {
         setTodos([...todos, response.data]);
         setNewTodoTitle('');
@@ -62,7 +62,7 @@ function App() {
 
   const handleTodoDelete = todo => {
     axios
-      .delete(`https://madarasid-todo-mern.netlify.app/api/todos/${todo._id}`)
+      .delete(`https://madarasid-todo-mern-app.netlify.app/api/todos/${todo._id}`)
       .then(response => {
         fetchTodos();
       })
